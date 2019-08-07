@@ -1,7 +1,7 @@
 FROM amazonlinux
 
 RUN set -exu && \
-  yump install -y tar && \
+  yum install -y tar && \
   curl -OLv https://nodejs.org/dist/v10.16.1/node-v10.16.1-linux-x64.tar.gz && \
   tar -xzv -C /usr/local --strip-components 1 -f node-v10.16.1-linux-x64.tar.gz && \
   rm node-v10.16.1-linux-x64.tar.gz && \
