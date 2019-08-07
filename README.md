@@ -6,3 +6,14 @@ Basic docker container to use for building Node/Go applications within a CI envi
 - NVM - Node 10.x (for latest Lambda support `nodejs10.x`)
 - Go 1.10.1
 - Apex (latest)
+
+### Using Different Version of Node
+If you need to use a different version of Node in your Dockerfile, you can utilize [NVM](https://nvm.sh) to download and switch your Node version. See the example below:
+
+```dockerfile
+FROM kylerross/apex-build
+
+RUN nvm install 12
+
+# ...
+```
