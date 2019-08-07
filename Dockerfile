@@ -1,10 +1,11 @@
 FROM amazonlinux
 
 RUN set -exu && \
-  yum install -y tar && \
-  curl -OLv https://nodejs.org/dist/v10.16.1/node-v10.16.1-linux-x64.tar.gz && \
-  tar -xzv -C /usr/local --strip-components 1 -f node-v10.16.1-linux-x64.tar.gz && \
-  rm node-v10.16.1-linux-x64.tar.gz && \
+  yum update -y && \
+  yum install -y tar gzip findutils && \
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash && \
+  . ~/.nvm/nvm.sh && \
+  nvm install 10 && \
   curl -OLv https://storage.googleapis.com/golang/go1.10.1.linux-amd64.tar.gz && \
   tar -xzv -C /usr/local -f go1.10.1.linux-amd64.tar.gz && \
   rm go1.10.1.linux-amd64.tar.gz && \
@@ -12,8 +13,6 @@ RUN set -exu && \
   chmod +x ./install.sh && \
   ./install.sh && \
   rm install.sh && \ 
-  mkdir /go && \
-  yum update -y && \
-  yum install -y findutils
+  mkdir /go
 
 ENV PATH=$PATH:/usr/local/go/bin GOPATH=/go
