@@ -2,7 +2,7 @@ FROM amazonlinux
 
 RUN set -exu && \
   yum update -y && \
-  yum groupinstall "Development Tools" && \
+  yum groupinstall "Development Tools" -y && \
   yum install -y tar gzip findutils && \
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash && \
   . ~/.nvm/nvm.sh && \
