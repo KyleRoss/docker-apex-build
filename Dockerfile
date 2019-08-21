@@ -3,6 +3,8 @@ FROM amazonlinux
 ENV NODE_VERSION 10.16.3
 ENV NVM_DIR $HOME/.nvm
 
+RUN mkdir $NVM_DIR
+
 RUN set -exu && \
   yum update -y && \
   yum groupinstall "Development Tools" -y && \
